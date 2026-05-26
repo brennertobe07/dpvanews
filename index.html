@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>VA Pulse &mdash; Tuesday, May 26, 2026</title>
+<style>
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #fafaf7;
+  color: #111;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 15px;
+  line-height: 1.35;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #0a2540; text-decoration: none; }
+a:visited { color: #4a1d6e; }
+a:hover { color: #cc0000; text-decoration: underline; }
+
+.sans {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 18px 24px 56px;
+}
+
+/* MASTHEAD */
+header.masthead {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 3px double #111;
+  margin-bottom: 18px;
+}
+.masthead .logo {
+  height: 52px;
+  width: auto;
+  margin-bottom: 4px;
+}
+.masthead h1 {
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 900;
+  font-size: 56px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.masthead .tagline {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: #666;
+  margin: 6px 0 4px;
+  font-weight: 700;
+}
+.masthead .date {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #333;
+  font-weight: 600;
+}
+
+/* COVERAGE PULSE */
+.pulse {
+  margin-bottom: 24px;
+  padding: 10px 14px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+}
+.pulse-label {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 6px;
+}
+.pulse-sub {
+  font-weight: 500;
+  color: #888;
+  letter-spacing: 0.08em;
+  margin-left: 6px;
+}
+.pulse-bar {
+  display: flex;
+  width: 100%;
+  height: 18px;
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.pulse-seg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: filter 0.15s;
+}
+.pulse-seg:hover { filter: brightness(0.9); }
+.pulse-seg-n { text-shadow: 0 0 2px rgba(0,0,0,0.3); }
+.pulse-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  color: #444;
+}
+.pulse-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.pulse-legend-item b { color: #111; }
+.pulse-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+/* HERO THEME */
+.hero {
+  margin-bottom: 24px;
+  padding: 20px 24px 18px;
+  background: #fff;
+  border-left: 5px solid #b91c1c;
+  border-top: 1px solid #e5e5e5;
+  border-right: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+.hero-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.hero-tag-text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: #b91c1c;
+  text-transform: uppercase;
+}
+.hero-headline {
+  margin: 0 0 8px;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: 900;
+  font-size: 34px;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  color: #111;
+}
+.hero-deck {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #444;
+  font-style: italic;
+}
+.hero-dots { display: inline-flex; gap: 4px; }
+.dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+/* SUPPORTING ITEMS (under hero + theme cards) */
+.supports {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 8px 0 0;
+  border-top: 1px solid #eee;
+}
+.supports--hero {
+  margin-top: 14px;
+  padding-top: 12px;
+}
+.support-item {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 2px 0;
+  font-size: 10px;
+  line-height: 1.3;
+}
+.supports--hero .support-item {
+  font-size: 14px;
+  padding: 3px 0;
+}
+.support-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  align-self: center;
+}
+.support-link {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  color: #0a2540;
+  flex: 1;
+  min-width: 0;
+}
+.supports--hero .support-link {
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.support-meta {
+  flex-shrink: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  color: #aaa;
+  font-variant-numeric: tabular-nums;
+}
+
+/* THEME CARDS GRID */
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.theme-card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  padding: 12px 14px;
+  position: relative;
+}
+.theme-card--specific {
+  border-left: 4px solid var(--c, #888);
+}
+.theme-card-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 5px;
+  min-height: 12px;
+}
+.theme-card-tag-text { color: #b91c1c; }
+.theme-card-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.theme-card-dots .dot { width: 8px; height: 8px; }
+.theme-card-name {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  line-height: 1.25;
+  letter-spacing: -0.003em;
+  margin-bottom: 3px;
+  color: #111;
+}
+.theme-card-summary {
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-style: italic;
+  font-size: 11px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* COMMUNITY COLUMNS */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+.column {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  min-width: 0;
+  position: relative;
+  overflow: hidden;
+}
+.column-band {
+  height: 5px;
+  background: var(--c, #888);
+}
+.column-header {
+  padding: 10px 14px 8px;
+  border-bottom: 2px solid #111;
+}
+.column-title {
+  margin: 0 0 4px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #111;
+}
+.column-counts {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  color: #777;
+  letter-spacing: 0.04em;
+}
+.column-24h b {
+  color: var(--c, #111);
+  font-size: 12px;
+  margin-right: 2px;
+}
+.item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.item {
+  padding: 7px 12px;
+  border-bottom: 1px dotted #e0e0e0;
+  font-size: 13px;
+  line-height: 1.3;
+}
+.item:last-child { border-bottom: none; }
+.item--lead {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.item--lead .item-title {
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.22;
+}
+.item-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.003em;
+  word-wrap: break-word;
+}
+.item-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  margin-top: 2px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  color: #999;
+  letter-spacing: 0.03em;
+}
+.item-source {
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+}
+.item-time {
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.fresh-dot {
+  color: #cc0000;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 0;
+  vertical-align: middle;
+  margin-right: 1px;
+}
+
+footer.foot {
+  margin-top: 40px;
+  padding-top: 14px;
+  border-top: 3px double #111;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  color: #666;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+footer.foot div + div { margin-top: 4px; }
+
+.empty {
+  padding: 32px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  border: 1px dashed #ccc;
+  background: #fff;
+}
+
+@media (max-width: 700px) {
+  .wrap { padding: 14px 14px 40px; }
+  .masthead h1 { font-size: 36px; }
+  .hero-headline { font-size: 24px; }
+  .columns { gap: 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <img class="logo" src="assets/vadems_logo.jpg" alt="Virginia Democrats">
+    <h1>VA Pulse</h1>
+    <div class="tagline">DAILY SCAN OF VIRGINIA&#x27;S POLITICAL INFORMATION ENVIRONMENT</div>
+    <div class="date">TUESDAY, MAY 26, 2026</div>
+  </header>
+
+  
+<section class="pulse">
+  <div class="pulse-label">Coverage Pulse <span class="pulse-sub">last 24h &middot; 35 stories</span></div>
+  <div class="pulse-bar"><div class="pulse-seg" style="flex-grow:2;background:#4A90E2" title="VA Dem-Aligned: 2 stories"><span class="pulse-seg-n">2</span></div><div class="pulse-seg" style="flex-grow:26;background:#9B9B9B" title="VA Nonpartisan Press: 26 stories"><span class="pulse-seg-n">26</span></div><div class="pulse-seg" style="flex-grow:1;background:#D4A574" title="Black VA Media: 1 stories"><span class="pulse-seg-n">1</span></div><div class="pulse-seg" style="flex-grow:6;background:#7BB369" title="Latino &amp; AAPI VA Media: 6 stories"><span class="pulse-seg-n">6</span></div></div>
+  <div class="pulse-legend"><span class="pulse-legend-item"><span class="pulse-dot" style="background:#4A90E2"></span>VA Dem-Aligned <b>2</b></span><span class="pulse-legend-item"><span class="pulse-dot" style="background:#9B9B9B"></span>VA Nonpartisan Press <b>26</b></span><span class="pulse-legend-item"><span class="pulse-dot" style="background:#D4A574"></span>Black VA Media <b>1</b></span><span class="pulse-legend-item"><span class="pulse-dot" style="background:#7BB369"></span>Latino &amp; AAPI VA Media <b>6</b></span></div>
+</section>
+
+
+  
+<section class="hero">
+  <div class="hero-tag"><span class="hero-tag-text">DOMINANT STORY &middot; 3 COMMUNITIES</span><span class="hero-dots"><span class="dot" style="background:#9B9B9B" title="VA Nonpartisan Press"></span><span class="dot" style="background:#4A90E2" title="VA Dem-Aligned"></span><span class="dot" style="background:#7BB369" title="Latino &amp; AAPI VA Media"></span></span></div>
+  <h2 class="hero-headline">Trump administration policy as political backdrop</h2>
+  <p class="hero-deck">Trump&#x27;s Iran posture, federal housing voucher cuts, and EPA emissions rollbacks appear across nonpartisan press, Dem-aligned, and AAPI outlets.</p>
+  <ul class="supports supports--hero"><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Virginia Mercury"></span><a class="support-link" href="https://virginiamercury.com/briefs/virginia-joins-lawsuit-to-block-epa-rollback-of-emission-standards/" target="_blank" rel="noopener">Virginia joins lawsuit to block EPA rollback of emission standards</a><span class="support-meta">8h</span></li><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Virginia Mercury"></span><a class="support-link" href="https://virginiamercury.com/2026/05/25/voucher-holders-face-housing-hurdles-as-trump-proposes-federal-cuts/" target="_blank" rel="noopener">Voucher holders face housing hurdles as Trump proposes federal cuts</a><span class="support-meta">yesterday</span></li><li class="support-item"><span class="support-dot" style="background:#7BB369" title="South Asian Herald"></span><a class="support-link" href="https://southasianherald.com/trump-outlines-preferred-options-for-disposing-irans-uranium-deposits-under-us-or-international-supervision/" target="_blank" rel="noopener">Trump Outlines Preferred Options for Disposing Iran’s Uranium Deposits Under US or International Supervision</a><span class="support-meta">5h</span></li></ul>
+</section>
+
+
+  <section class="themes-grid"><div class="theme-card theme-card--cross"><div class="theme-card-tag"><span class="theme-card-tag-text">CROSS &middot; 2</span><span class="theme-card-dots"><span class="dot" style="background:#D4A574" title="Black VA Media"></span><span class="dot" style="background:#7BB369" title="Latino &amp; AAPI VA Media"></span></span></div><div class="theme-card-name">Memorial Day observances and elected official visibility</div><div class="theme-card-summary">Both Black VA media and South Asian outlets covered Memorial Day events featuring local/state…</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#7BB369" title="South Asian Herald"></span><a class="support-link" href="https://southasianherald.com/jenifer-rajkumar-honors-fallen-service-members-at-queens-memorial-day-events/" target="_blank" rel="noopener">Jenifer Rajkumar Honors Fallen Service Members at Queens Memorial Day Events</a><span class="support-meta">17h</span></li><li class="support-item"><span class="support-dot" style="background:#D4A574" title="Black Virginia News"></span><a class="support-link" href="https://blackvirginianews.substack.com/p/memorial-day-2026-va250-mobile-museum" target="_blank" rel="noopener">Memorial Day 2026 🇺🇸 VA250 Mobile Museum 🇺🇸 Rep. Beyer, Lt. Gov. Hashmi, Senator Salim at Falls Church Parade</a><span class="support-meta">20h</span></li></ul></div><div class="theme-card theme-card--specific" style="--c:#9B9B9B"><div class="theme-card-tag" style="color:#9B9B9B">VA NONPARTISAN PRESS ONLY</div><div class="theme-card-name">Stalled implementation of Virginia&#x27;s new gun laws</div><div class="theme-card-summary">Background checks for private firearm sales haven&#x27;t restarted a month after emergency enactment…</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Brandon Jarvis (VA Scope)"></span><a class="support-link" href="https://virginiapoliticalnewsletter.substack.com/p/some-commonwealth-attorneys-vow-to" target="_blank" rel="noopener">Some commonwealth&#x27;s attorneys vow to not enforce new gun ban in Virginia</a><span class="support-meta">7h</span></li><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Cardinal News"></span><a class="support-link" href="https://cardinalnews.org/2026/05/26/background-checks-for-private-firearm-sales-not-happening-one-month-after-bills-emergency-enactment/" target="_blank" rel="noopener">Background checks for private firearm sales not happening, one month after bill’s emergency enactment</a><span class="support-meta">9h</span></li></ul></div><div class="theme-card theme-card--specific" style="--c:#9B9B9B"><div class="theme-card-tag" style="color:#9B9B9B">VA NONPARTISAN PRESS ONLY</div><div class="theme-card-name">Data centers driving transmission lines and rate pressure</div><div class="theme-card-summary">The Valley Link transmission proposal to connect new nuclear/fossil generation to suburban data…</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Brandon Jarvis (VA Scope)"></span><a class="support-link" href="https://virginiapoliticalnewsletter.substack.com/p/residents-wrangle-over-transmission" target="_blank" rel="noopener">Residents Wrangle Over Transmission Line Proposal for Rural Virginia</a><span class="support-meta">3h</span></li><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Virginia Mercury"></span><a class="support-link" href="https://virginiamercury.com/2026/05/25/repub/data-center-battles-started-in-the-states-now-its-congress-under-siege/" target="_blank" rel="noopener">Data center battles started in the states. Now it’s Congress under siege.</a><span class="support-meta">yesterday</span></li></ul></div><div class="theme-card theme-card--specific" style="--c:#9B9B9B"><div class="theme-card-tag" style="color:#9B9B9B">VA NONPARTISAN PRESS ONLY</div><div class="theme-card-name">Local government fiscal squeeze: water rates and city budgets</div><div class="theme-card-summary">Hopewell/Prince George/Alexandria leaders opposing a 30% water rate hike and Martinsville taking…</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Virginia Mercury"></span><a class="support-link" href="https://virginiamercury.com/briefs/hopewell-prince-george-alexandria-leaders-oppose-proposed-30-water-rate-hike-more-headlines/" target="_blank" rel="noopener">Hopewell, Prince George, Alexandria leaders oppose proposed 30% water rate hike, more headlines</a><span class="support-meta">9h</span></li><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Cardinal News"></span><a class="support-link" href="https://cardinalnews.org/2026/05/26/martinsville-city-council-meets-tuesday-will-discuss-budget-and-tax-rate/" target="_blank" rel="noopener">Martinsville residents can comment on the $122 million city budget at Tuesday council meeting</a><span class="support-meta">10h</span></li></ul></div><div class="theme-card theme-card--specific" style="--c:#9B9B9B"><div class="theme-card-tag" style="color:#9B9B9B">VA NONPARTISAN PRESS ONLY</div><div class="theme-card-name">Rural emergency services and volunteer EMS sustainability</div><div class="theme-card-summary">Cardinal News launching a months-long series on the collapse of the volunteer fire/EMS backbone in…</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Cardinal News"></span><a class="support-link" href="https://cardinalnews.org/2026/05/26/cardinal-news-looks-for-solutions-to-volunteer-emergency-response-systems-challenges/" target="_blank" rel="noopener">Cardinal News looks for solutions to volunteer emergency response system’s challenges</a><span class="support-meta">9h</span></li><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Cardinal News"></span><a class="support-link" href="https://cardinalnews.org/2026/05/26/the-roanoke-valley-is-experiencing-a-drought-but-its-far-from-raising-red-flags/" target="_blank" rel="noopener">The Roanoke Valley is experiencing a drought, but it’s far from raising red flags</a><span class="support-meta">9h</span></li></ul></div><div class="theme-card theme-card--specific" style="--c:#9B9B9B"><div class="theme-card-tag" style="color:#9B9B9B">VA NONPARTISAN PRESS ONLY</div><div class="theme-card-name">Lynchburg GOP intra-party factional fight</div><div class="theme-card-summary">Lynchburg Republicans reversed course on ranked-choice voting and will pick three city council…</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#9B9B9B" title="Cardinal News"></span><a class="support-link" href="https://cardinalnews.org/2026/05/26/lynchburg-republicans-are-about-to-have-a-political-showdown-between-two-rival-factions/" target="_blank" rel="noopener">Lynchburg Republicans are about to have a political showdown between 2 rival factions</a><span class="support-meta">9h</span></li></ul></div><div class="theme-card theme-card--specific" style="--c:#4A90E2"><div class="theme-card-tag" style="color:#4A90E2">VA DEM-ALIGNED ONLY</div><div class="theme-card-name">House Democrats&#x27; 700+ bills signed messaging</div><div class="theme-card-summary">Blue Virginia amplifying the House Democratic Caucus celebrating over 700 bills signed by Governor…</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#4A90E2" title="Blue Virginia"></span><a class="support-link" href="https://bluevirginia.us/2026/05/virginia-house-democrats-celebrate-over-700-bills-signed-into-law/" target="_blank" rel="noopener">Virginia House Democrats Celebrate Over 700 Bills Signed Into Law</a><span class="support-meta">4h</span></li></ul></div><div class="theme-card theme-card--specific" style="--c:#7BB369"><div class="theme-card-tag" style="color:#7BB369">LATINO &AMP; AAPI VA MEDIA ONLY</div><div class="theme-card-name">India&#x27;s economic crossroads and diaspora business networks</div><div class="theme-card-summary">Coverage of India&#x27;s positioning with global investors, India Week in London, and steel sector…</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#7BB369" title="South Asian Herald"></span><a class="support-link" href="https://southasianherald.com/india-at-the-crossroads/" target="_blank" rel="noopener">India at the Crossroads</a><span class="support-meta">11h</span></li><li class="support-item"><span class="support-dot" style="background:#7BB369" title="South Asian Herald"></span><a class="support-link" href="https://southasianherald.com/india-week-to-host-global-leaders-across-business-policy-and-film/" target="_blank" rel="noopener">India Week to Host Global Leaders Across Business, Policy and Film</a><span class="support-meta">13h</span></li><li class="support-item"><span class="support-dot" style="background:#7BB369" title="South Asian Herald"></span><a class="support-link" href="https://southasianherald.com/decarbonization-of-steel/" target="_blank" rel="noopener">Decarbonization of Steel</a><span class="support-meta">yesterday</span></li></ul></div><div class="theme-card theme-card--specific" style="--c:#D4A574"><div class="theme-card-tag" style="color:#D4A574">BLACK VA MEDIA ONLY</div><div class="theme-card-name">Countdown to August 4 primary</div><div class="theme-card-summary">Explicit &#x27;71 days until the August 4, 2026 primary&#x27; framing tied to community events.</div><ul class="supports"><li class="support-item"><span class="support-dot" style="background:#D4A574" title="Black Virginia News"></span><a class="support-link" href="https://blackvirginianews.substack.com/p/memorial-day-2026-va250-mobile-museum" target="_blank" rel="noopener">Memorial Day 2026 🇺🇸 VA250 Mobile Museum 🇺🇸 Rep. Beyer, Lt. Gov. Hashmi, Senator Salim at Falls Church Parade</a><span class="support-meta">20h</span></li></ul></div></section>
+
+  <section class="columns">
+    <section class="column" style="--c:#4A90E2"><div class="column-band"></div><header class="column-header"><h2 class="column-title">VA Dem-Aligned</h2><div class="column-counts"><span class="column-24h"><b>2</b> today</span><span class="column-total">36 in store</span></div></header><ul class="item-list"><li class="item item--lead item--fresh"><span class="fresh-dot">&bull;</span> <a class="item-title" href="https://bluevirginia.us/2026/05/virginia-house-democrats-celebrate-over-700-bills-signed-into-law/" target="_blank" rel="noopener">Virginia House Democrats Celebrate Over 700 Bills Signed Into Law</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">4h</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/tuesday-5-26-news-pope-leo-demands-ai-rules-to-safeguard-humanity-before-its-too-late-taking-the-l-and-trumps-long-iran-walk-into-the/" target="_blank" rel="noopener">Tuesday (5/26) News: “Pope Leo demands AI rules to ‘safeguard humanity’ — before it’s too late”; “Taking the L … And Trump’s Long Iran Walk Into the Twilight”</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">7h</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/memorial-day-5-25-news-trumps-war-is-staggering-to-an-incoherent-defeat-can-anything-stop-trumps-corruption/" target="_blank" rel="noopener">Memorial Day (5/25) News: “Trump’s War Is Staggering to an Incoherent Defeat”; “Can Anything Stop Trump’s Corruption?”</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">yesterday</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/eyes-on-our-north-star" target="_blank" rel="noopener">Eyes on our North Star</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">yesterday</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/live-with-network-nova-live-7bb" target="_blank" rel="noopener">Keep Hope Alive! Live with Network NOVA LIVE</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">yesterday</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/sunday-5-24-news-mood-in-russia-turns-against-putin-steven-cheung-blows-up-at-mike-pompeo-over-iran-deal-criticism/" target="_blank" rel="noopener">Sunday (5/24) News: “Mood in Russia turns against Putin”; “Steven Cheung Blows Up At Mike Pompeo Over Iran Deal Criticism”</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">Sun</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/recording-episode-19-democracy-is" target="_blank" rel="noopener">Recording🎥 Episode 19: &quot;Democracy is a verb&quot; and so is LOVE. Never give up hope.</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">Sat</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/network-nova-sunday-sit-down-with" target="_blank" rel="noopener">Network Nova Sunday Sit Down with Special Guest Michele Hornish</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">Sat</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/ivy-main-asks-why-should-we-residents-be-stuck-with-30-years-of-paying-for-a-honking-big-fracked-gas-burning-climate-change-driving-monstrosity-whose-sole-purpose-is-to-feed-the-tech-companies/" target="_blank" rel="noopener">Ivy Main Asks, “Why should we…be stuck with 30 years of paying for a honking-big, fracked-gas-burning, climate-change-driving monstrosity” to power “the tech companies’…advanced chatbots?”</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">Sat</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/report-gas-prices-in-hampton-roads-jump-as-jen-kiggans-and-congressional-republicans-abruptly-cancel-iran-war-vote-and-leave-washington/" target="_blank" rel="noopener">Report: Gas Prices in Hampton Roads Jump as Jen Kiggans and Congressional Republicans Abruptly Cancel Iran War Vote and Leave Washington</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">Sat</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/saturday-5-23-news-trump-is-now-a-world-class-kleptocrat-gabbard-gone-good-riddance/" target="_blank" rel="noopener">Saturday (5/23) News: “Trump Is Now a World-Class Kleptocrat”; Gabbard Gone – Good Riddance</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">Sat</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/audio-va-del-paul-krizek-optimistic-on-getting-a-budget-data-centers-compromise-cannabis-legislation-collective-bargaining/" target="_blank" rel="noopener">Audio: VA Del. Paul Krizek Optimistic on Getting a Budget, Data Centers Compromise, Cannabis Legislation, Collective Bargaining</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">Fri</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/video-rep-james-walkinshaw-d-va11-expresses-frustration-with-haphazardly-done-incomplete-dnc-autopsy-report-chair-ken-martin/" target="_blank" rel="noopener">Video: Rep. James Walkinshaw (D-VA11) Expresses Frustration with “Haphazardly Done, Incomplete” DNC “Autopsy” Report, Chair Ken Martin</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">Fri</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/live-at-12-pm-et-democracy-is-a-verb" target="_blank" rel="noopener">LIVE at 12 PM ET: &quot;Democracy is a VERB: Courage, Community &amp; Choosing our Values&quot;</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">Fri</span></div></li>
+<li class="item"><a class="item-title" href="https://vadogwood.com/local/things-to-do/celestial-events-night-skies-summer-virginia/" target="_blank" rel="noopener">6 celestial events visible from Virginia skies this summer</a><div class="item-meta"><span class="item-source">Virginia Dogwood</span><span class="item-time">Fri</span></div></li>
+<li class="item"><a class="item-title" href="https://bluevirginia.us/2026/05/friday-5-22-news-trump-self-deals-lies-and-seems-to-fall-asleep-in-meetings-the-media-treats-it-all-as-priced-in-dumb-and-dumber-republican-style/" target="_blank" rel="noopener">Friday (5/22) News: “Trump self-deals, lies and seems to fall asleep in meetings. The media treats it all as ‘priced in’”; “Dumb and dumber, Republican-style”</a><div class="item-meta"><span class="item-source">Blue Virginia</span><span class="item-time">Fri</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/walking-the-tightrope-this-friday" target="_blank" rel="noopener">Walking the Tightrope this Friday at 12 PM ET</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">Thu</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/i-hope-i-didnt-offend-you-the-quiet" target="_blank" rel="noopener">I Hope I Didn’t Offend You: The Quiet Part</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">Wed</span></div></li>
+<li class="item"><a class="item-title" href="https://vadogwood.com/local/things-to-do/weekly-action-guide-va-may-22-28/" target="_blank" rel="noopener">Your weekly guide to taking action in Virginia (May 22 – May 28)</a><div class="item-meta"><span class="item-source">Virginia Dogwood</span><span class="item-time">Wed</span></div></li>
+<li class="item"><a class="item-title" href="https://vadogwood.com/news/spanberger-vetoes-cannabis-drug-affordability-board-bills-drawing-criticism-from-democrats/" target="_blank" rel="noopener">Spanberger vetoes cannabis, drug affordability board bills, drawing criticism from Democrats</a><div class="item-meta"><span class="item-source">Virginia Dogwood</span><span class="item-time">Wed</span></div></li>
+<li class="item"><a class="item-title" href="https://vadogwood.com/local/food-drink/grocery-stores-in-virginia-best-deals/" target="_blank" rel="noopener">Which Virginia grocery stores have the best deals?</a><div class="item-meta"><span class="item-source">Virginia Dogwood</span><span class="item-time">Wed</span></div></li>
+<li class="item"><a class="item-title" href="https://vadogwood.com/news/audio-virginia-congressman-defends-2024-child-marriage-vote/" target="_blank" rel="noopener">AUDIO: Virginia congressman defends 2024 child marriage vote</a><div class="item-meta"><span class="item-source">Virginia Dogwood</span><span class="item-time">May 19</span></div></li>
+<li class="item"><a class="item-title" href="https://vadogwood.com/local/things-to-do/guide-to-virginias-water-parks/" target="_blank" rel="noopener">Virginia water parks: 2026 opening dates, prices, &amp; what to expect</a><div class="item-meta"><span class="item-source">Virginia Dogwood</span><span class="item-time">May 18</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/we-are-not-backing-down-live-with" target="_blank" rel="noopener">We are NOT backing down! Live with Network NOVA LIVE</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">May 18</span></div></li>
+<li class="item"><a class="item-title" href="https://fridaypowerlunch.substack.com/p/watch-episode-18-the-wall-must-hold" target="_blank" rel="noopener">Watch 🎥 Episode 18: “The Wall Must Hold: Rights, Religion &amp; the Fight for Democracy.”</a><div class="item-meta"><span class="item-source">Friday Power Lunch</span><span class="item-time">May 16</span></div></li></ul></section>
+<section class="column" style="--c:#9B9B9B"><div class="column-band"></div><header class="column-header"><h2 class="column-title">VA Nonpartisan Press</h2><div class="column-counts"><span class="column-24h"><b>26</b> today</span><span class="column-total">67 in store</span></div></header><ul class="item-list"><li class="item item--lead item--fresh"><span class="fresh-dot">&bull;</span> <a class="item-title" href="https://augustafreepress.com/news/uva-lacrosse-williams-stays-in-house-names-kevin-cassese-head-coach/" target="_blank" rel="noopener">UVA Lacrosse: Williams stays in-house, names Kevin Cassese head coach</a><div class="item-meta"><span class="item-source">Augusta Free Press</span><span class="item-time">1h</span></div></li>
+<li class="item item--fresh"><span class="fresh-dot">&bull;</span> <a class="item-title" href="https://augustafreepress.com/news/last-week-in-rob-schilling-uva-baseball-pre-empts-the-chemtrails-guy/" target="_blank" rel="noopener">Last Week in Rob Schilling: UVA Baseball pre-empts the chemtrails guy</a><div class="item-meta"><span class="item-source">Augusta Free Press</span><span class="item-time">2h</span></div></li>
+<li class="item item--fresh"><span class="fresh-dot">&bull;</span> <a class="item-title" href="https://www.vpm.org/news/2026-05-26/chesterfield-bike-paths-trails-surreywood-providence-rd-crawford-beard" target="_blank" rel="noopener">Cyclists and business owners push for trail improvements in Chesterfield</a><div class="item-meta"><span class="item-source">VPM News</span><span class="item-time">2h</span></div></li>
+<li class="item item--fresh"><span class="fresh-dot">&bull;</span> <a class="item-title" href="https://virginiapoliticalnewsletter.substack.com/p/residents-wrangle-over-transmission" target="_blank" rel="noopener">Residents Wrangle Over Transmission Line Proposal for Rural Virginia</a><div class="item-meta"><span class="item-source">Brandon Jarvis (VA Scope)</span><span class="item-time">3h</span></div></li>
+<li class="item"><a class="item-title" href="https://virginiapoliticalnewsletter.substack.com/p/some-commonwealth-attorneys-vow-to" target="_blank" rel="noopener">Some commonwealth&#x27;s attorneys vow to not enforce new gun ban in Virginia</a><div class="item-meta"><span class="item-source">Brandon Jarvis (VA Scope)</span><span class="item-time">7h</span></div></li>
+<li class="item"><a class="item-title" href="https://drewlandry.substack.com/p/the-outsider-newsletter-may-26-2026" target="_blank" rel="noopener">The Outsider Newsletter: May 26, 2026</a><div class="item-meta"><span class="item-source">Drew Landry (The Outsider)</span><span class="item-time">8h</span></div></li>
+<li class="item"><a class="item-title" href="https://virginiamercury.com/2026/05/26/virginia-eyes-toll-revenue-for-transit-as-express-lane-debate-grows/" target="_blank" rel="noopener">Virginia eyes toll revenue for transit as express lane debate grows</a><div class="item-meta"><span class="item-source">Virginia Mercury</span><span class="item-time">8h</span></div></li>
+<li class="item"><a class="item-title" href="https://virginiamercury.com/2026/05/26/virginia-faces-mental-health-provider-shortages-as-hampton-roads-residents-struggle-to-navigate-care/" target="_blank" rel="noopener">Virginia faces mental health provider shortages as Hampton Roads residents struggle to navigate care</a><div class="item-meta"><span class="item-source">Virginia Mercury</span><span class="item-time">8h</span></div></li>
+<li class="item"><a class="item-title" href="https://virginiamercury.com/2026/05/26/repub/private-equity-companies-buy-more-apartment-units-including-in-virginia/" target="_blank" rel="noopener">Private equity companies buy more apartment units, including in Virginia</a><div class="item-meta"><span class="item-source">Virginia Mercury</span><span class="item-time">8h</span></div></li>
+<li class="item"><a class="item-title" href="https://virginiamercury.com/briefs/virginia-joins-lawsuit-to-block-epa-rollback-of-emission-standards/" target="_blank" rel="noopener">Virginia joins lawsuit to block EPA rollback of emission standards</a><div class="item-meta"><span class="item-source">Virginia Mercury</span><span class="item-time">8h</span></div></li>
+<li class="item"><a class="item-title" href="https://virginiamercury.com/briefs/hopewell-prince-george-alexandria-leaders-oppose-proposed-30-water-rate-hike-more-headlines/" target="_blank" rel="noopener">Hopewell, Prince George, Alexandria leaders oppose proposed 30% water rate hike, more headlines</a><div class="item-meta"><span class="item-source">Virginia Mercury</span><span class="item-time">9h</span></div></li>
+<li class="item"><a class="item-title" href="https://www.vpm.org/news/2026-05-26/rva-eden-village-tiny-homes-housing-homelessness-cathy-ritter" target="_blank" rel="noopener">Inside one woman’s effort to bring tiny homes to Richmond</a><div class="item-meta"><span class="item-source">VPM News</span><span class="item-time">9h</span></div></li>
+<li class="item"><a class="item-title" href="https://cardinalnews.org/2026/05/26/background-checks-for-private-firearm-sales-not-happening-one-month-after-bills-emergency-enactment/" target="_blank" rel="noopener">Background checks for private firearm sales not happening, one month after bill’s emergency enactment</a><div class="item-meta"><span class="item-source">Cardinal News</span><span class="item-time">9h</span></div></li>
+<li class="item"><a class="item-title" href="https://cardinalnews.org/2026/05/26/cardinal-news-looks-for-solutions-to-volunteer-emergency-response-systems-challenges/" target="_blank" rel="noopener">Cardinal News looks for solutions to volunteer emergency response system’s challenges</a><div class="item-meta"><span class="item-source">Cardinal News</span><span class="item-time">9h</span></div></li>
+<li class="item"><a class="item-title" href="https://cardinalnews.org/2026/05/26/lynchburg-republicans-are-about-to-have-a-political-showdown-between-two-rival-factions/" target="_blank" rel="noopener">Lynchburg Republicans are about to have a political showdown between 2 rival factions</a><div class="item-meta"><span class="item-source">Cardinal News</span><span class="item-time">9h</span></div></li>
+<li class="item"><a class="item-title" href="https://cardinalnews.org/2026/05/26/the-roanoke-valley-is-experiencing-a-drought-but-its-far-from-raising-red-flags/" target="_blank" rel="noopener">The Roanoke Valley is experiencing a drought, but it’s far from raising red flags</a><div class="item-meta"><span class="item-source">Cardinal News</span><span class="item-time">9h</span></div></li>
+<li class="item"><a class="item-title" href="https://cardinalnews.org/2026/05/26/martinsville-city-council-meets-tuesday-will-discuss-budget-and-tax-rate/" target="_blank" rel="noopener">Martinsville residents can comment on the $122 million city budget at Tuesday council meeting</a><div class="item-meta"><span class="item-source">Cardinal News</span><span class="item-time">10h</span></div></li>
+<li class="item"><a class="item-title" href="https://cardinalnews.org/2026/05/26/cardinal-commerce-notes-transformer-factory-opens-in-wytheville/" target="_blank" rel="noopener">Cardinal Commerce Notes: Transformer factory opens in Wytheville</a><div class="item-meta"><span class="item-source">Cardinal News</span><span class="item-time">10h</span></div></li>
+<li class="item"><a class="item-title" href="https://cardinalnews.org/2026/05/26/maxey-civility-at-kroger-check-out/" target="_blank" rel="noopener">Maxey: Civility at Kroger check out</a><div class="item-meta"><span class="item-source">Cardinal News</span><span class="item-time">10h</span></div></li>
+<li class="item"><a class="item-title" href="https://cardinalnews.org/2026/05/26/headlines-from-across-the-state-virginia-tech-board-to-vote-on-creating-llc-for-athletics/" target="_blank" rel="noopener">Headlines from across the state: Virginia Tech board to vote on creating LLC for athletics</a><div class="item-meta"><span class="item-source">Cardinal News</span><span class="item-time">10h</span></div></li>
+<li class="item"><a class="item-title" href="https://augustafreepress.com/news/nationals-blast-six-homers-beat-cleveland-10-2-to-get-over-500/" target="_blank" rel="noopener">Nationals blast six homers, beat Cleveland, 10-2, to get over .500</a><div class="item-meta"><span class="item-source">Augusta Free Press</span><span class="item-time">16h</span></div></li>
+<li class="item"><a class="item-title" href="https://augustafreepress.com/news/colton-cowser-walks-off-another-os-outlast-rays-9-7/" target="_blank" rel="noopener">Colton Cowser walks off another one: Orioles outlast Rays, 9-7, in extras</a><div class="item-meta"><span class="item-source">Augusta Free Press</span><span class="item-time">17h</span></div></li>
+<li class="item"><a class="item-title" href="https://augustafreepress.com/news/odac-baseball-season-comes-to-an-end-with-lynchburg-randolph-macon-super-regional-losses/" target="_blank" rel="noopener">ODAC Baseball season ends with Lynchburg, Randolph-Macon Super Regional losses</a><div class="item-meta"><span class="item-source">Augusta Free Press</span><span class="item-time">19h</span></div></li>
+<li class="item"><a class="item-title" href="https://augustafreepress.com/news/we-the-victims-who-pays-when-the-government-weaponizes-its-power/" target="_blank" rel="noopener">We the victims: Who pays when the government weaponizes its power?</a><div class="item-meta"><span class="item-source">Augusta Free Press</span><span class="item-time">20h</span></div></li>
+<li class="item"><a class="item-title" href="https://augustafreepress.com/news/aew-double-or-nothing-redux-the-darby-allin-nightmare-is-over/" target="_blank" rel="noopener">AEW ‘Double or Nothing’ redux: The Darby Allin nightmare is over</a><div class="item-meta"><span class="item-source">Augusta Free Press</span><span class="item-time">21h</span></div></li></ul></section>
+<section class="column" style="--c:#D4A574"><div class="column-band"></div><header class="column-header"><h2 class="column-title">Black VA Media</h2><div class="column-counts"><span class="column-24h"><b>1</b> today</span><span class="column-total">15 in store</span></div></header><ul class="item-list"><li class="item item--lead"><a class="item-title" href="https://blackvirginianews.substack.com/p/memorial-day-2026-va250-mobile-museum" target="_blank" rel="noopener">Memorial Day 2026 🇺🇸 VA250 Mobile Museum 🇺🇸 Rep. Beyer, Lt. Gov. Hashmi, Senator Salim at Falls Church Parade</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">20h</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/white-supremacist-march-in-virginia" target="_blank" rel="noopener">White Supremacist March in Virginia Beach; Least Qualified SecDef in History Speaks Against Diversity at West Point</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">Sun</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/events-in-virginia-memorial-day-weekend" target="_blank" rel="noopener">Events in Virginia: Memorial Day Weekend 🇺🇸 May Into June</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">Sat</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/teachers-firefighters-and-state-workers" target="_blank" rel="noopener">Teachers, Firefighters and State Workers March in Richmond After Gov. Spanberger’s Veto of Collective Bargaining</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">Fri</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/naacp-cbc-call-for-black-athlete" target="_blank" rel="noopener">NAACP + CBC Call for Black Athlete Boycott of Colleges in Southern States Moving to Erase Black Political Representation</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">Wed</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/sen-michael-jones-statement-on-the" target="_blank" rel="noopener">Sen. Michael Jones Statement on the Governor’s Red Onion Veto; Richmond Cooling Stations Location; LDF Congressional Map Watch</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">Wed</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/after-voiding-31-million-votes-in" target="_blank" rel="noopener">After Voiding 3.1 Million Votes in Virginia and 45,000 Votes in Louisiana, Republicans Continue Push to Erase Black Members of Congress; Richmond Voting Rights Rally</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 18</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/10-people-just-erased-31-million" target="_blank" rel="noopener">10 People Just Erased 3.1 Million Votes in Virginia: Reactions; Voting Rights Rally Today in Richmond; Brown v Board Event</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 16</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/us-supreme-court-does-what-you-thought" target="_blank" rel="noopener">U.S. Supreme Court Does What You Thought It Would Do; Virginia NAACP to Host Rally for Voting Rights National Day of Action</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 16</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/ep74-rep-bobby-scott-on-the-virginia" target="_blank" rel="noopener">EP74 - Rep. Bobby Scott on the Virginia Supreme Court, Redistricting and Voting Rights</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 15</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/black-voters-a-look-at-the-history" target="_blank" rel="noopener">Black Voters: A Look at the History of Push Back to Black Voting Rights in America; May 16 Voting Rights Event in Richmond</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 14</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/ep73-black-voters-is-the-trumpian" target="_blank" rel="noopener">EP73 - Is the Sleeping Giant of Black Voters About to Wake Up?</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 14</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/seven-elected-officials-all-dems" target="_blank" rel="noopener">Seven Elected Officials (All Dems?) in Virginia Have Been Targeted by the Trump Administration and Trump&#x27;s Allies in Congress</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 13</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/republicans-move-fast-to-eliminate" target="_blank" rel="noopener">Republicans Move Fast to Eliminate Seats of 8 Black Members of Congress After Trump’s SCOTUS Destroys 1965 Voting Rights Act</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 12</span></div></li>
+<li class="item"><a class="item-title" href="https://blackvirginianews.substack.com/p/voting-rights-activists-plan-mass" target="_blank" rel="noopener">Voting Rights Activists Plan Mass Rally on May 16; Portsmouth: State of the City; Mother’s Day 📸 at Laurel Hill United Church of Christ</a><div class="item-meta"><span class="item-source">Black Virginia News</span><span class="item-time">May 11</span></div></li></ul></section>
+<section class="column" style="--c:#7BB369"><div class="column-band"></div><header class="column-header"><h2 class="column-title">Latino &amp; AAPI VA Media</h2><div class="column-counts"><span class="column-24h"><b>6</b> today</span><span class="column-total">10 in store</span></div></header><ul class="item-list"><li class="item item--lead item--fresh"><span class="fresh-dot">&bull;</span> <a class="item-title" href="https://southasianherald.com/china-pakistan-agree-to-deepen-strategic-ties-advance-cpec-expansion/" target="_blank" rel="noopener">China, Pakistan Agree to Deepen Strategic Ties, Advance CPEC Expansion</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">2h</span></div></li>
+<li class="item item--fresh"><span class="fresh-dot">&bull;</span> <a class="item-title" href="https://southasianherald.com/team-india-arrives-in-england-ahead-of-2026-unity-cup/" target="_blank" rel="noopener">Team India Arrives in England Ahead of 2026 Unity Cup</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">3h</span></div></li>
+<li class="item item--fresh"><span class="fresh-dot">&bull;</span> <a class="item-title" href="https://southasianherald.com/trump-outlines-preferred-options-for-disposing-irans-uranium-deposits-under-us-or-international-supervision/" target="_blank" rel="noopener">Trump Outlines Preferred Options for Disposing Iran’s Uranium Deposits Under US or International Supervision</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">5h</span></div></li>
+<li class="item"><a class="item-title" href="https://southasianherald.com/india-at-the-crossroads/" target="_blank" rel="noopener">India at the Crossroads</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">11h</span></div></li>
+<li class="item"><a class="item-title" href="https://southasianherald.com/india-week-to-host-global-leaders-across-business-policy-and-film/" target="_blank" rel="noopener">India Week to Host Global Leaders Across Business, Policy and Film</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">13h</span></div></li>
+<li class="item"><a class="item-title" href="https://southasianherald.com/jenifer-rajkumar-honors-fallen-service-members-at-queens-memorial-day-events/" target="_blank" rel="noopener">Jenifer Rajkumar Honors Fallen Service Members at Queens Memorial Day Events</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">17h</span></div></li>
+<li class="item"><a class="item-title" href="https://southasianherald.com/trump-says-iran-deal-proceeding-nicely-iran-acknowledges-progress/" target="_blank" rel="noopener">Trump Says Iran Deal ‘Proceeding Nicely’ Iran Acknowledges Progress</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">yesterday</span></div></li>
+<li class="item"><a class="item-title" href="https://southasianherald.com/kenyan-hockey-olympian-surjit-singh-rihals-remarkable-journey-across-continents/" target="_blank" rel="noopener">Kenyan Hockey Olympian Surjit Singh Rihal’s Remarkable Journey Across Continents</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">yesterday</span></div></li>
+<li class="item"><a class="item-title" href="https://southasianherald.com/decarbonization-of-steel/" target="_blank" rel="noopener">Decarbonization of Steel</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">yesterday</span></div></li>
+<li class="item"><a class="item-title" href="https://southasianherald.com/satirical-storm-sweeps-indian-politics/" target="_blank" rel="noopener">Satirical Storm Sweeps Indian Politics</a><div class="item-meta"><span class="item-source">South Asian Herald</span><span class="item-time">yesterday</span></div></li></ul></section>
+<section class="column" style="--c:#C77DFF"><div class="column-band"></div><header class="column-header"><h2 class="column-title">LGBTQ VA Media</h2><div class="column-counts"><span class="column-24h"><b>0</b> today</span><span class="column-total">1 in store</span></div></header><ul class="item-list"><li class="item item--lead"><a class="item-title" href="https://www.washingtonblade.com/2026/05/08/va-supreme-court-invalidates-democrat-backed-redistricting-plan/?utm_source=rss&amp;utm_medium=rss&amp;utm_campaign=va-supreme-court-invalidates-democrat-backed-redistricting-plan" target="_blank" rel="noopener">Va. Supreme Court invalidates Democrat-backed redistricting plan</a><div class="item-meta"><span class="item-source">Washington Blade (VA section)</span><span class="item-time">May 8</span></div></li></ul></section>
+  </section>
+
+  <footer class="foot">
+    <div>Last refreshed: May 26, 2026 at 02:06 PM Eastern Daylight Time &middot; themes refreshed just now ago</div>
+    <div>76 headlines shown &middot; 129 in 30-day store &middot; 20 active sources</div>
+  </footer>
+</div>
+</body>
+</html>
