@@ -2,6 +2,7 @@
   "_comment": "Source registry for VA Pulse. Update this file to add/remove/retag sources.",
   "_last_updated": "2026-05-26",
   "_change_notes_2026_05_26": "Tightened to party-political focus. Switched cardinal_news, va_mercury, loudoun_times, radio_iq to politics-category/working feeds. Deactivated richmond_free_press (site 404), whro_weekly (empty feed), sabato_crystal_ball (CDN blocks), loudoun_times (WAF rate-limiting). Added the_hill_campaign and roll_call_politics for national coverage. Added dpva_press and dnc_press to va_dem_aligned. RPV/GOP coverage dropped — RPV press releases too infrequent (1 item / 30d) to populate a bucket; the press feeds (Jarvis, Mercury, etc.) cover VA Republicans well enough.",
+  "_change_notes_2026_05_27": "Dropped washington_blade_va source and lgbtq_va_media bucket — Washington Blade VA section publishes too infrequently (1 fresh item per 30d window) to populate a community column. Same pattern as the RPV/va_gop drop.",
   "communities": {
     "va_dem_aligned": {
       "label": "VA Dem-Aligned",
@@ -22,11 +23,6 @@
       "label": "Latino & AAPI VA Media",
       "description": "Latino, Vietnamese, Korean, Chinese, South Asian VA media",
       "color": "#7BB369"
-    },
-    "lgbtq_va_media": {
-      "label": "LGBTQ VA Media",
-      "description": "LGBTQ-focused VA media and advocacy",
-      "color": "#C77DFF"
     },
     "national_va_focused": {
       "label": "National (VA-Focused)",
@@ -227,16 +223,6 @@
       "community": "latino_aapi_va_media",
       "geo": "nova",
       "type": "news_site",
-      "active": true
-    },
-    {
-      "id": "washington_blade_va",
-      "name": "Washington Blade (VA section)",
-      "feed_url": "https://www.washingtonblade.com/category/news/local-news/virginia/feed/",
-      "site_url": "https://www.washingtonblade.com/category/news/local-news/virginia/",
-      "community": "lgbtq_va_media",
-      "geo": "dmv",
-      "type": "newspaper",
       "active": true
     },
     {
