@@ -85,20 +85,21 @@ logged out, recreate the task with `/ru <user> /rp <password>`.
 }
 ```
 
-**Communities (6 as of 2026-05-27):**
+**Communities (5 as of 2026-05-27):**
 - `va_dem_aligned` — DPVA + DNC + explicitly Dem voices (Blue Virginia,
   Shirazi, Friday Power Lunch, Dogwood)
 - `va_nonpartisan_press` — independent VA reporting (Jarvis, Landry,
   Cardinal News politics, VA Mercury gov+pol, VPM, Radio IQ, Augusta FP)
 - `black_va_media` — Black VA News
 - `latino_aapi_va_media` — South Asian Herald (El Tiempo Latino pending scraper)
-- `lgbtq_va_media` — Washington Blade VA section
 - `national_va_focused` — The Hill Campaign, Roll Call Politics
 
-A previous `opposition_aware` / `va_gop` bucket was dropped 2026-05-27. RPV
-press releases (the only working VA Republican feed) publish too infrequently
-(~1 item per month) to populate a daily-refresh bucket; VA Republican news is
-already covered well by the nonpartisan press feeds.
+**Dropped buckets (2026-05-27):**
+- `opposition_aware` / `va_gop` — RPV press releases publish ~1 item/month,
+  too infrequent for a daily-refresh bucket. VA Republican news still
+  surfaces via the nonpartisan press feeds.
+- `lgbtq_va_media` — Washington Blade's VA section fetches 10 items per
+  run but the same 9 are stale; only ~1 fresh item per 30d. Same problem.
 
 **Inactive sources** stay in `sources.json` with `active: false` and a
 `scrape_notes` field documenting *why* (so we don't re-add a broken feed).
