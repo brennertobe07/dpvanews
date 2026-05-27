@@ -141,9 +141,10 @@ Edit the Task Scheduler entry. The scripts have no built-in cadence assumption.
 
 ## Still open
 
-- **Custom subdomain on vadems.org** — name not chosen (candidates: news,
-  pulse, signal, dpvanews). Needs `CNAME` file in `output/` + Cloudflare DNS
-  record. Matches the deploy pattern of absentee/enr/vantage.
+- **Custom subdomain on vadems.org** — *deferred 2026-05-27*. Staying on the
+  GitHub Pages URL for now. Revisit if/when audience grows beyond the data
+  team or DPVA wants to brand it as part of the *.vadems.org stack. Would
+  need a `CNAME` file in `output/` + Cloudflare DNS record.
 - **Scraping for `axios_richmond` and `el_tiempo_latino`** — deferred to v2.
   Both have no public RSS. Would use `requests` + `beautifulsoup4`.
 - **VPM News is sparse** — only returns 2 items per fetch; keep or drop?
