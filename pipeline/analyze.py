@@ -31,6 +31,7 @@ DATA_DIR = Path(os.environ.get("DPVA_DATA_DIR", str(PROJECT_ROOT / "data")))
 SOURCES_FILE = SCRIPT_DIR / "sources.json"
 ITEMS_FILE = DATA_DIR / "items.json"
 THEMES_FILE = DATA_DIR / "themes.json"
+HISTORY_DIR = DATA_DIR / "themes-history"
 LOG_FILE = DATA_DIR / "analyze.log"
 
 ANALYSIS_WINDOW_HOURS = 36  # Slightly more than 24h to handle morning runs
@@ -287,6 +288,14 @@ def main():
     with open(THEMES_FILE, "w", encoding="utf-8") as f:
         json.dump(themes, f, indent=2, ensure_ascii=False)
     log(f"Wrote {THEMES_FILE}")
+
+    # Daily snapshot — overwritten each run, so the last run of the day wins.
+    history_path = HISTORY_DIR / f"{datetime.now(timezone.utc).strftime('%Y-%m-%d')}.json"
+    history_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(history_path, "w", encoding="utf-8") as f:
+        json.dump(themes, f, indent=2, ensure_ascii=False)
+    log(f"Wrote {history_path}")
+
     log("ANALYZE RUN END")
     return 0
 
