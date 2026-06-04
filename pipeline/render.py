@@ -29,6 +29,7 @@ OUTPUT_FILE = SITE_DIR / "index.html"
 ITEMS_PER_COLUMN = 25
 PULSE_WINDOW_HOURS = 24
 FRESH_HOURS = 6
+STALE_THEMES_HOURS = 8  # themes older than this trigger the stale-analysis banner
 MAX_SUPPORT_ITEMS = 3
 SUMMARY_MAX_CHARS = 100
 SITE_TITLE = "VA Pulse"
@@ -406,6 +407,26 @@ header.masthead {
   font-weight: 600;
 }
 
+/* STALE THEMES BANNER */
+.stale-banner {
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  background: #fdecea;
+  border: 1px solid #b91c1c;
+  border-left: 5px solid #b91c1c;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #7a1410;
+}
+.stale-banner-tag {
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b91c1c;
+}
+.stale-banner-detail { color: #7a1410; }
+
 /* COVERAGE PULSE */
 .pulse {
   margin-bottom: 24px;
@@ -759,6 +780,31 @@ footer.foot div + div { margin-top: 4px; }
 """
 
 
+def render_stale_banner(themes, now):
+    """Warn prominently when theme analysis (the top cards) has gone stale.
+
+    The story columns refresh with no API key, but the theme cards depend on
+    analyze.py succeeding. If that silently fails, the page keeps showing old
+    themes; this surfaces it instead of letting it rot unnoticed."""
+    gen = parse_iso(themes.get("generated_at")) if themes else None
+    hrs = hours_ago(gen, now) if gen else None
+    if hrs is not None and hrs <= STALE_THEMES_HOURS:
+        return ""
+    if gen:
+        fmt = "%b %#d, %I:%M %p" if os.name == "nt" else "%b %-d, %I:%M %p"
+        when = gen.astimezone().strftime(fmt)
+        ago = f"{int(hrs)}h ago" if hrs < 48 else f"{int(hrs // 24)} days ago"
+        detail = f"last refreshed {html.escape(when)} ({ago})"
+    else:
+        detail = "no theme analysis has run yet"
+    return f"""
+<section class="stale-banner" role="alert">
+  <span class="stale-banner-tag">&#9888;&#65039; Theme analysis stale</span>
+  <span class="stale-banner-detail">&mdash; {detail}. The story lists below are current; the top story cards may be out of date.</span>
+</section>
+"""
+
+
 def render_html(items, themes, sources_config, now):
     communities = sources_config.get("communities", {})
     communities_order = list(communities.keys())
@@ -772,6 +818,7 @@ def render_html(items, themes, sources_config, now):
     n_items_shown = sum(min(len(g), ITEMS_PER_COLUMN) for g in groups.values())
 
     pulse = render_coverage_pulse(counts_24h, communities, communities_order)
+    stale_banner = render_stale_banner(themes, now)
     hero_theme, hero_kind = pick_hero_theme(themes)
     hero_html = render_hero_theme(hero_theme, hero_kind, communities, now)
     other_themes = render_other_themes(themes, hero_theme, communities, now)
@@ -805,6 +852,8 @@ def render_html(items, themes, sources_config, now):
     <div class="tagline">{html.escape(SITE_TAGLINE)}</div>
     <div class="date">{html.escape(date_header)}</div>
   </header>
+
+  {stale_banner}
 
   {pulse}
 
