@@ -33,12 +33,20 @@ ITEMS_FILE = DATA_DIR / "items.json"
 THEMES_FILE = DATA_DIR / "themes.json"
 HISTORY_DIR = DATA_DIR / "themes-history"
 LOG_FILE = DATA_DIR / "analyze.log"
+USAGE_LOG = PROJECT_ROOT / "logs" / "usage.log"
+
+# $ per 1M tokens (input, output) — keep in sync with MODEL for accurate cost logging.
+MODEL_PRICING = {
+    "claude-sonnet-4-6": (3.0, 15.0),
+    "claude-haiku-4-5": (1.0, 5.0),
+    "claude-opus-4-7": (5.0, 25.0),
+}
 
 ANALYSIS_WINDOW_HOURS = 36  # Slightly more than 24h to handle morning runs
 LOW_VOLUME_MIN_ITEMS = 5    # If a community has fewer than this in the default window…
 LOW_VOLUME_MAX_HOURS = 7 * 24  # …widen its window up to this much (e.g. official party press = sporadic)
 MAX_ITEMS_PER_COMMUNITY = 40  # Cap to keep context window manageable
-MODEL = "claude-opus-4-7"  # Or claude-sonnet-4-6 for cheaper runs
+MODEL = "claude-sonnet-4-6"  # Synthesis model. claude-haiku-4-5 is ~3x cheaper if quality allows.
 
 
 def log(msg):
@@ -48,6 +56,32 @@ def log(msg):
     LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
     with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(line + "\n")
+
+
+def log_usage(model, usage, n_items):
+    """Append one JSON line per run to logs/usage.log so token/cost usage can be
+    tracked over time. Logged before JSON parsing so spend is captured even if
+    the model returns malformed output."""
+    in_tok = getattr(usage, "input_tokens", 0) or 0
+    out_tok = getattr(usage, "output_tokens", 0) or 0
+    cache_read = getattr(usage, "cache_read_input_tokens", 0) or 0
+    cache_write = getattr(usage, "cache_creation_input_tokens", 0) or 0
+    price_in, price_out = MODEL_PRICING.get(model, (0.0, 0.0))
+    est_cost = in_tok / 1e6 * price_in + out_tok / 1e6 * price_out
+    record = {
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "model": model,
+        "input_tokens": in_tok,
+        "output_tokens": out_tok,
+        "cache_read_input_tokens": cache_read,
+        "cache_creation_input_tokens": cache_write,
+        "n_items": n_items,
+        "est_cost_usd": round(est_cost, 5),
+    }
+    USAGE_LOG.parent.mkdir(parents=True, exist_ok=True)
+    with open(USAGE_LOG, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record) + "\n")
+    log(f"Usage: in={in_tok} out={out_tok} est=${est_cost:.4f} -> {USAGE_LOG}")
 
 
 def load_items():
@@ -254,6 +288,8 @@ def main():
     )
     if response.stop_reason == "max_tokens":
         log(f"WARNING: response hit max_tokens — JSON likely truncated")
+
+    log_usage(MODEL, response.usage, total_recent)
 
     raw = response.content[0].text.strip()
     if raw.startswith("```"):
